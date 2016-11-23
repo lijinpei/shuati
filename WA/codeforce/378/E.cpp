@@ -13,42 +13,43 @@ int main(void) {
 	int p = 0;
 	for (int i = 1; i <= n; ++i) {
 		if (('U' == stair[i]) || (p >= i)) {
-		while (1) {
-			++p;
-			if ((p > n) ||  ('D' == stair[p]))
+			while (1) {
+				++p;
+				if ((p > n) ||  ('D' == stair[p]))
+					break;
+			}
+			if (p > n)
 				break;
-		}
-		if (p > n)
-			break;
-		if ('U' == stair[i]) {
-			lc += i;
-			rc += p;
-		} else {
-			rc += p - i;
-		}
-		} else 
+			if ('U' == stair[i]) {
+				lc += i;
+				rc += p;
+			} else {
+				rc += p - i;
+			}
+		} else
 			p = i;
 		ans[i] = i + 2 * (rc - lc);
 	}
 
-	lc = 0, rc = 0;
+	lc = 0;
+	rc = 0;
 	p = n + 1;
 	for (int i = n; i; --i) {
 		if (('D' == stair[i]) || (p <= i)) {
-		while (1) {
-			--p;
-			if ((p < 1) || ('U' == stair[p]))
+			while (1) {
+				--p;
+				if ((p < 1) || ('U' == stair[p]))
+					break;
+			}
+			if (p < 1)
 				break;
-		}
-		if (p < 1)
-			break;
-		if ('D' == stair[i]) {
-			rc += i;
-			lc += p;
-		} else {
-			lc += p - i;
-		}
-		} else 
+			if ('D' == stair[i]) {
+				rc += i;
+				lc += p;
+			} else {
+				lc += p - i;
+			}
+		} else
 			p = i;
 		ans[i] = (n  + 1 - i) + 2 * (rc - lc);
 	}
