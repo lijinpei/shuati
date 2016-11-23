@@ -1,7 +1,8 @@
 #include <cstdio>
+#include <iostream>
 
 const int NMAX = 1000000;
-long int ans[NMAX + 1];
+long long int ans[NMAX + 1];
 char stair[NMAX + 2];
 
 int main(void) {
@@ -9,7 +10,7 @@ int main(void) {
 	scanf("%d\n", &n);
 	scanf("%s", stair + 1);
 
-	long int lc = 0, rc = 0;
+	long long int lc = 0, rc = 0;
 	int p = 0;
 	for (int i = 1; i <= n; ++i) {
 		if (('U' == stair[i]) || (p >= i)) {
@@ -55,7 +56,7 @@ int main(void) {
 	}
 
 	for (int i = 1; i <= n; ++i)
-		printf("%ld ", ans[i]);
+		std::cout << ans[i] << ' ';
 
 	return 0;
 }
